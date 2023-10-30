@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import './addCoffee.css'
 
 export default function AddCoffee({ setCoffees }) {
@@ -7,8 +8,11 @@ const getCoffees = () => {
         .then(res => res.json())
         .then(data => setCoffees(data))
         .catch(alert)
-        
 }
+
+useEffect(() => {
+    getCoffees()
+}, []) //ALWAYS PUT THE SQUARE BRACKETS SO YOU DON'T RUN UP A FAT BILLLLL!!!!!
 
 const handleSubmit = (e) => {
     e.preventDefault()
