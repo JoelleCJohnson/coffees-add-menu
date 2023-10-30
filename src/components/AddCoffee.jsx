@@ -1,6 +1,14 @@
 import './addCoffee.css'
 export default function AddCoffee() {
 
+const getCoffees = () => {
+    fetch('https://first-deployed-api-c12.web.app/coffees')
+        .then(res => res.json())
+        .then(data => console.log(data))
+        .catch(alert)
+        
+}
+
 const handleSubmit = (e) => {
     e.preventDefault()
     //gather form data
@@ -13,7 +21,7 @@ const handleSubmit = (e) => {
     //create coffee object
     const newCoffee = { name, recipe, description} //restructuring
     //POST new coffee obbject to the API
-    fetch('https://first-deployed-api-jj.web.app/coffees', { 
+    fetch('https://first-deployed-api-c12.web.app/coffees', { 
         method : "POST",
         headers: {
             'Content-Type': 'application/json',
@@ -21,8 +29,20 @@ const handleSubmit = (e) => {
         body: JSON.stringify(newCoffee)
     })
         .then(res => res.json())
-        .then(message => console.log(message))
+        .then(data => {
+            //check if the message is "Success!"
+            if(data.message === "Success!") {
+                //our coffee was added successfuly
+                //clear the form
+                e.target.name.value = ''
+                e.target.recipe.value ='' 
+                e.target.description.value = ''
+                //then, get updated list of coffees...
+            }
+        })
         .catch(alert)
+
+        getCoffees()
 }
 
     return (
