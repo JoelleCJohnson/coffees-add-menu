@@ -14,6 +14,7 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 1em;
 }
 
 label {
@@ -39,5 +40,4 @@ input.add-btn {
     background: navy;
     color: whitesmoke;
     font-weight: bold;
-
 }
