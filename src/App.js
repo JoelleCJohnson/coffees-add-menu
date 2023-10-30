@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import Hero from './components/Hero'
+import CoffeeList from './components/CoffeeList';
 import AddCoffee from './components/AddCoffee';
+import Hero from './components/Hero'
 import './App.css'
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
     <>
       <Hero />
       <AddCoffee setCoffees={setCoffees} />
+      <CoffeeList coffees={coffees} />
     </>
   );
 }
